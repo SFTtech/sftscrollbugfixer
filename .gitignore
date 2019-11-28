@@ -1,0 +1,8 @@
+/detours
+*.exe
+*.obj
+*.pdb
+*.res
+*.dll
+*.exp
+*.lib
