@@ -1,0 +1,30 @@
+1 VERSIONINFO
+FILEVERSION 1, 3, 3, 7
+PRODUCTVERSION 1, 3, 3, 7
+FILEFLAGSMASK 0
+FILEOS 0x40000
+FILETYPE 1
+
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904B0"
+        {
+            VALUE "CompanyName", "SFT Technologies"
+            VALUE "FileDescription", "Make AoE Great Again!"
+            VALUE "FileVersion", "1.3.3.7"
+            VALUE "InternalName", "fix_for_the_fucking_scrollbug"
+            VALUE "LegalCopyright", "2019 SFT Tech, https://openage.sft.mx"
+            VALUE "OriginalFilename", "fix_scrollbug32.dll"
+            VALUE "ProductName", "ScrollBugFix"
+            VALUE "ProductVersion", "1.3.3.7"
+            VALUE "author", "eblig"
+            VALUE "betterEngine", "openage"
+            VALUE "openageURL", "https://openage.sft.mx"
+        }
+    }
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0409 0x04B0
+    }
+}
