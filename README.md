@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-- Download `age2_x1_fixed.tar` from the [Releases page](https://github.com/SFTtech/sftscrollbugfixer/releases)
+- Download `age2_x1_fixed.tar.gz` from the [Releases page](https://github.com/SFTtech/sftscrollbugfixer/releases)
 - Unpack it into your `age2_x1` folder
 - From now on launch the game with `age2_x1_fixed.exe` instead of `age2_x1.exe`
 - No patching of the game binary is required
