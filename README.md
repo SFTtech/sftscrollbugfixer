@@ -1,5 +1,16 @@
 # Age of Empires II scrollbug fix
 
+## TL;DR
+
+- Download `age2_x1_fixed.tar` from the [Releases page](https://github.com/SFTtech/sftscrollbugfixer/releases)
+- Unpack it into your `age2_x1` folder
+- From now on launch the game with `age2_x1_fixed.exe` instead of `age2_x1.exe`
+- No patching of the game binary is required
+- Black magic now removes all of the suffering
+- ?????
+- PROFIT
+- If you want to use the fix with a different version of the game, just modify the `.ini` file accordingly.
+
 ## What is the scrollbug?
 
 Sometimes when you tab out of the game, after tabbing back in the game will be stuck in a state where it is constantly scrolling in some direction.
@@ -86,3 +97,9 @@ When launched, `dll_inject.exe` will
 - wait until the exe file has finished
 
 If you use the pre-compiled and pre-configured `age2_x1_fixed.exe`, `age2_x1_fixed.ini`, `fix_scrollbug32.dll` you can just place them in the `age2_x1` folder and launch `age2_x1_fixed.exe` instead of `age2_x1.exe`.
+
+## Credits
+
+Thanks to **Sulix** who posted an analysis of the bug on the [Steam Forum](https://steamcommunity.com/app/221380/discussions/2/622954302095447538/#c154645539343670235).
+
+Thanks to Microsoft Research for the Detours library and the excellent accompanying samples. `dll_inject.cpp` was derived directly from the `withdll` example, and `fix_scrollbug.cpp` was derived by modifying one of the other examples.
