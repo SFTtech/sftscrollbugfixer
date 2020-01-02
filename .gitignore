@@ -1,4 +1,5 @@
-/detours
+/detours32
+/detours64
 *.exe
 *.obj
 *.pdb

@@ -2,7 +2,7 @@
 #define WIN32
 #define NT
 
-#define DBG_TRACE   0
+#define DEBUG   0
 
 #include <windows.h>
 #include <stdio.h>
@@ -103,15 +103,15 @@ static SHORT (WINAPI * Real_GetKeyState)(int nVirtKey) = GetKeyState;
 SHORT WINAPI Mine_GetKeyState(int nVirtKey)
 {
     SHORT ret;
-    ret = Real_GetKeyState(nVirtKey) & 0xff;
+    ret = Real_GetKeyState(nVirtKey);
     #ifdef DEBUG
-    printf("getkeystate(%d) - detoured - result 0x%02x\r\n", nVirtKey, ret & 0xff);
+    printf("getkeystate(%d) - detoured - result 0x%04x\r\n", nVirtKey, ret);
     #endif
-    if (ret & ~0x81) {
+    if (ret & ~0x8001) {
         #ifdef DEBUG
-        printf("bad flags are set in GetKeyState(%d): 0x%02x, fixing them for you to save you!!!111111111111111111111\r\n", nVirtKey, ret & 0xff);
+        printf("bad flags are set in GetKeyState(%d): 0x%04x, fixing them for you to save you!!!111111111111111111111\r\n", nVirtKey, ret);
         #endif
-        ret &= 0x81;
+        ret &= 0x8001;
     }
     return ret;
 }
@@ -184,6 +184,8 @@ LONG AttachDetours(VOID)
     DetourTransactionBegin();
     DetourUpdateThread(GetCurrentThread());
 
+    printf("attaching detours [%lld]\n", (long long int) GetCurrentThread());
+
     ATTACH(CreateProcessW);
 
     ATTACH(GetKeyboardState);
@@ -198,6 +200,8 @@ LONG DetachDetours(VOID)
 {
     DetourTransactionBegin();
     DetourUpdateThread(GetCurrentThread());
+
+    printf("detaching detours [%lld]\n", (long long int) GetCurrentThread());
 
     DETACH(CreateProcessW);
 
