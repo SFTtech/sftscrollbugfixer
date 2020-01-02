@@ -104,11 +104,11 @@ SHORT WINAPI Mine_GetKeyState(int nVirtKey)
 {
     SHORT ret;
     ret = Real_GetKeyState(nVirtKey);
-    #ifdef DEBUG
+    #if DEBUG
     printf("getkeystate(%d) - detoured - result 0x%04x\r\n", nVirtKey, ret);
     #endif
     if (ret & ~0x8001) {
-        #ifdef DEBUG
+        #if DEBUG
         printf("bad flags are set in GetKeyState(%d): 0x%04x, fixing them for you to save you!!!111111111111111111111\r\n", nVirtKey, ret);
         #endif
         ret &= 0x8001;
@@ -123,17 +123,17 @@ BOOL WINAPI Mine_GetKeyboardState(PBYTE lpKeyState)
     BOOL ret;
     int i;
     ret = Real_GetKeyboardState(lpKeyState);
-    #ifdef DEBUG
+    #if DEBUG
     printf("GetKeyboardState() - detoured\r\n");
     #endif
     if (lpKeyState == NULL) {
-        #ifdef DEBUG
+        #if DEBUG
         printf("GetKeyboardState() - buffer is nullptr\r\n");
         #endif
         return ret;
     }
     if (ret == FALSE) {
-        #ifdef DEBUG
+        #if DEBUG
         printf("GetKeyboardState() - failed\r\n");
         #endif
         return ret;
@@ -141,7 +141,7 @@ BOOL WINAPI Mine_GetKeyboardState(PBYTE lpKeyState)
 
     for (i = 255; i >= 0; i--) {
         if (lpKeyState[i] & ~0x81) {
-            #ifdef DEBUG
+            #if DEBUG
             printf("GetKeyboardState(): bad flag in lpKeyState[%d]: 0x%02x, fixing it for you to save you!!1111111\r\n", i, lpKeyState[i] & 0xff);
             #endif
             lpKeyState[i] &= 0x81;
